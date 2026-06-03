@@ -626,8 +626,8 @@ abstract contract GuardedExecutor is ERC7821 {
     }
 
     /// @dev Returns whether the call is a self execute.
-    function _isSelfExecute(address target, bytes4 fnSel) internal view returns (bool) {
-        return LibBit.and(target == address(this), fnSel == ERC7821.execute.selector);
+    function _isSelfExecute(address target, bytes4) internal view returns (bool) {
+        return target == address(this);
     }
 
     /// @dev Returns a bytes32 value that contains `target` and `fnSel`.
